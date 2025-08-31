@@ -1,61 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 19 ✨</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 19 ✨</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background music -->
-  <audio id="bg-music" autoplay loop>
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
 
-  <!-- Old starry background (fallback) -->
-  <div class="stars"></div>
+<audio id="bg-music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- Canvas for animated stars & asteroids -->
-  <canvas id="backgroundCanvas"></canvas>
+<div class="stars"></div>
+<canvas id="backgroundCanvas"></canvas>
+<div class="hats"></div>
 
-  <!-- Hats Container -->
-  <div class="hats"></div>
+<div class="main-container">
+  <h1 class="hogwarts-title">Happy 19 BBG 🪄</h1>
+  <p class="note">A magical year begins! 💫</p>
+  <p class="bday-note">I’m so grateful to have you in my life. Your magic lights up my world 💖</p>
+</div>
 
-  <!-- Main Birthday Section -->
-  <div class="main-container">
-    <h1 class="hogwarts-title">Happy 19 BBG 🪄</h1>
-    <p class="note">A magical year begins! 💫</p>
-    <p class="bday-note">I’m so grateful to have you in my life. Your magic lights up my world every day 💖</p>
+<section class="memories">
+  <h2 class="section-title">📸 Memories</h2>
+  <div class="gallery">
+    <div class="photo-frame"><img src="pic1.jpg" alt="Memory 1"></div>
+    <div class="photo-frame"><img src="pic2.jpg" alt="Memory 2"></div>
+    <div class="photo-frame"><img src="pic3.jpg" alt="Memory 3"></div>
+    <div class="photo-frame"><img src="pic4.jpg" alt="Memory 4"></div>
   </div>
+</section>
 
-  <!-- Memories Section -->
-  <section class="memories">
-    <h2 class="section-title">📸 Memories</h2>
-    <div class="gallery">
-      <div class="photo-frame"><img src="pic1.jpg" alt="Memory 1"></div>
-      <div class="photo-frame"><img src="pic2.jpg" alt="Memory 2"></div>
-      <div class="photo-frame"><img src="pic3.jpg" alt="Memory 3"></div>
-      <div class="photo-frame"><img src="pic4.jpg" alt="Memory 4"></div>
-    </div>
-  </section>
+<section class="game-section">
+  <h2 class="section-title">🧙 Wizard’s Game</h2>
+  <canvas id="wizardGame" width="600" height="400"></canvas>
+  <p class="note">Move with ⬅️ ➡️ and catch the stars ⭐</p>
+</section>
 
-  <!-- Wizard Game -->
-  <section class="game-section">
-    <h2 class="section-title">🧙 Wizard’s Game</h2>
-    <canvas id="wizardGame" width="600" height="400"></canvas>
-    <p class="note">Move with ⬅️ ➡️ and catch the stars ⭐</p>
-  </section>
-
-  <!-- Magical Popup -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>🎉 Surprise 🎉</h2>
-      <p>You’re officially 19, step into the wizarding world ✨🪄</p>
-    </div>
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <h2>🎉 Surprise 🎉</h2>
+    <p>You’re officially 19, step into the wizarding world ✨🪄</p>
   </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
