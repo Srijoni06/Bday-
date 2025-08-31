@@ -42,8 +42,8 @@ body {
 }
 
 .photo-frame {
-  width: 180px;
-  height: 220px;
+  width: 180px;       /* fixed medium width */
+  height: 220px;      /* fixed medium height */
   border: 3px solid #f5c518;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.05);
@@ -52,13 +52,13 @@ body {
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-  overflow: hidden;
+  overflow: hidden;   /* hides anything overflowing */
 }
 
 .photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* ensures no stretching */
+  width: 100%;        /* fills frame perfectly */
+  height: 100%;       /* fills frame perfectly */
+  object-fit: cover;  /* crops nicely instead of stretching */
   border-radius: 8px;
 }
 
