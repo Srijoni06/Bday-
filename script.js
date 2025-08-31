@@ -62,4 +62,39 @@ window.onload = function() {
     setTimeout(()=>hat.remove(), parseFloat(hat.style.animationDuration)*1000);
   }
   setInterval(createHat, 600);
+
+  // Birthday Cake Feature
+  const candle = document.getElementById("candle");
+  const cakeBody = document.getElementById("cakeBody");
+  const knife = document.getElementById("knife");
+
+  // Blow candle
+  candle.addEventListener("click", ()=>{
+    candle.classList.add("blowed");
+  });
+
+  // Move knife with mouse
+  document.addEventListener("mousemove", e=>{
+    knife.style.left = (e.pageX - knife.offsetWidth/2) + "px";
+    knife.style.top = (e.pageY - knife.offsetHeight/2) + "px";
+  });
+
+  // Cut cake
+  cakeBody.addEventListener("click", ()=>{
+    // Visual slice effect
+    cakeBody.style.background = "#e07b5a";
+    // Optional: particle effect for fun sparkle
+    for(let i=0;i<10;i++){
+      const sparkle = document.createElement("div");
+      sparkle.style.position = "absolute";
+      sparkle.style.width = sparkle.style.height = Math.random()*6+2+"px";
+      sparkle.style.background = "yellow";
+      sparkle.style.borderRadius = "50%";
+      sparkle.style.left = (cakeBody.offsetLeft + Math.random()*cakeBody.offsetWidth) + "px";
+      sparkle.style.top = (cakeBody.offsetTop + Math.random()*cakeBody.offsetHeight) + "px";
+      sparkle.style.pointerEvents = "none";
+      document.body.appendChild(sparkle);
+      setTimeout(()=>sparkle.remove(), 800);
+    }
+  });
 };
