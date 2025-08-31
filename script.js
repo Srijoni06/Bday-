@@ -40,9 +40,13 @@ window.addEventListener('load', () => {
 
 // ====== Enter site ======
 enterSiteBtn.addEventListener('click', () => {
-  entryModal.classList.add('hidden');
-  entryModal.setAttribute('aria-hidden', 'true');
-  // gentle confetti
+  entryModal.animate(
+    [{ opacity: 1 }, { opacity: 0 }],
+    { duration: 500, easing: 'ease-out' }
+  ).onfinish = () => {
+    entryModal.classList.add('hidden');
+    entryModal.setAttribute('aria-hidden', 'true');
+  };
   burstConfetti(80);
 });
 
@@ -60,13 +64,15 @@ playSongBtn.addEventListener('click', async () => {
       await song.play();
       isPlaying = true;
       playSongBtn.textContent = '⏸ Pause Song';
+      playSongBtn.classList.add('playing'); // add glow
     } else {
       song.pause();
       isPlaying = false;
       playSongBtn.textContent = '▶ Play Song';
+      playSongBtn.classList.remove('playing');
     }
   } catch (e) {
-    alert('Add your song at assets/song.mp3 or interact with the page first to allow audio.');
+    alert('Make sure song.mp3 is uploaded at root & interact once before playing!');
   }
 });
 
@@ -143,9 +149,7 @@ let running = false;
 
 startGameBtn.addEventListener('click', startGame);
 resetGameBtn.addEventListener('click', resetGame);
-gameArea.addEventListener('click', (e) => {
-  // Clicking empty area could create a sparkle or ignore; no-op
-});
+gameArea.addEventListener('click', () => {});
 
 function startGame(){
   if (running) return;
@@ -166,7 +170,6 @@ function startGame(){
 function resetGame(){
   running = false;
   clearInterval(spawnLoop); clearInterval(gameTimer);
-  spawnLoop = null; gameTimer = null;
   score = 0; timeLeft = 30;
   scoreEl.textContent = score;
   timeEl.textContent = timeLeft;
@@ -176,7 +179,6 @@ function resetGame(){
 function endGame(){
   running = false;
   clearInterval(spawnLoop); clearInterval(gameTimer);
-  spawnLoop = null; gameTimer = null;
   setTimeout(() => {
     wishDialogText.innerHTML = `Time! You scored <strong>${score}</strong> 🎯<br/>HBD BBG — you popped that.`;
     try { wishDialog.showModal(); } catch { alert(`Score: ${score}`); }
@@ -196,7 +198,6 @@ function spawnBalloon(){
   const left = Math.random()* (gameArea.clientWidth - size);
   b.style.left = left + 'px';
 
-  // animation duration based on size (bigger -> slower)
   const dur = 3000 + Math.random()*2000 + (size*8);
   b.style.animationDuration = dur + 'ms';
 
@@ -204,13 +205,10 @@ function spawnBalloon(){
     e.stopPropagation();
     score++;
     scoreEl.textContent = score;
-    // pop animation
-    b.animate([{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(1.3)', opacity: 0 }], { duration: 120, easing: 'ease-out' }).onfinish = () => b.remove();
+    b.animate([{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(1.3)', opacity: 0 }], { duration: 120 }).onfinish = () => b.remove();
   });
 
-  // remove if finished floating
   setTimeout(() => b.remove(), dur + 100);
-
   gameArea.appendChild(b);
 }
 
@@ -231,7 +229,7 @@ typerInput.addEventListener('keydown', (e) => {
   }
 });
 
-// ====== Wishes Board (client-side only) ======
+// ====== Wishes Board ======
 wishForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const text = wishInput.value.trim();
@@ -242,10 +240,10 @@ wishForm.addEventListener('submit', (e) => {
   wishInput.value = '';
 });
 
-// ====== Micro helper ======
+// ====== Helpers ======
 function pulse(el, ms=400){
   el.animate(
-    [{ transform:'scale(1)' }, { transform:'scale(1.03)' }, { transform:'scale(1)' }],
+    [{ transform:'scale(1)' }, { transform:'scale(1.05)' }, { transform:'scale(1)' }],
     { duration: ms, easing:'ease-in-out' }
   );
-}
+  }
