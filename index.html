@@ -1,107 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy Birthday BBG 🎂</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="theme-color" content="#B51A2B" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 19 ✨</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Entry Modal -->
-  <div id="entryModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <h2 id="modalTitle">Happy 19th, BBG! ✨</h2>
-      <p class="modal-note">To more tea together ☕💖</p>
-      <p class="modal-sub">Wishing you laughter, love, and main-character energy all year.</p>
-      <button id="enterSiteBtn" class="btn primary">Enter the Party</button>
-    </div>
+  <!-- Background music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Starry background -->
+  <div class="stars"></div>
+
+  <!-- Main Birthday Section -->
+  <div class="main-container">
+    <h1 class="hogwarts-title">Happy 19 BBG 🪄</h1>
+    <p class="note">To move T together: Happy 19 — A magical year begins! 💫</p>
   </div>
 
-  <header class="site-header">
-    <div class="title-wrap">
-      <h1>Happy Birthday <span class="gradient">BBG</span> 🎉</h1>
-      <p class="subtitle">To more tea together ☕ — cheers to 19, may this year be soft, silly & unstoppable. 💫</p>
+  <!-- Image placeholders -->
+  <div class="gallery">
+    <div class="photo-frame"> <p>Upload Pic 1</p> </div>
+    <div class="photo-frame"> <p>Upload Pic 2</p> </div>
+    <div class="photo-frame"> <p>Upload Pic 3</p> </div>
+    <div class="photo-frame"> <p>Upload Pic 4</p> </div>
+  </div>
+
+  <!-- Magical Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>🎉 Surprise 🎉</h2>
+      <p>You’re officially 19, step into the wizarding world ✨🪄</p>
     </div>
-
-    <div class="controls">
-      <button id="playSongBtn" class="btn pill">▶ Play Song</button>
-      <button id="confettiBtn" class="btn pill">✨ Confetti</button>
-      <button id="popupWishBtn" class="btn pill">💌 Pop a Wish</button>
-      <button id="themeToggleBtn" class="btn pill" aria-pressed="false">🌙 Theme</button>
-    </div>
-
-    <form id="nameForm" class="name-form" autocomplete="off">
-      <input id="friendName" type="text" placeholder="Your BBG's name…" aria-label="Friend name" />
-      <button class="btn primary" type="submit">Personalize</button>
-    </form>
-  </header>
-
-  <main class="container">
-    <!-- Hero Card -->
-    <section class="card hero">
-      <div class="hero-left">
-        <h2 id="personalGreeting">HBD, BBG! 💖</h2>
-        <p class="tiny-note">Small note for your 19th: you glow different, and this year is so yours. 🌟</p>
-        <div class="hero-actions">
-          <button id="toastBtn" class="btn">🥂 Toast</button>
-          <button id="surpriseBtn" class="btn">🎁 Surprise</button>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="sparkles" aria-hidden="true"></div>
-      </div>
-    </section>
-
-    <!-- Game: Balloon Pop -->
-    <section class="card game">
-      <div class="game-header">
-        <h3>🎈 Balloon Pop – 30s</h3>
-        <div class="game-stats">
-          <span>Score: <strong id="score">0</strong></span>
-          <span>Time: <strong id="time">30</strong>s</span>
-        </div>
-      </div>
-      <div id="gameArea" class="game-area" aria-label="Balloon pop game area"></div>
-      <div class="game-controls">
-        <button id="startGameBtn" class="btn primary">Start Game</button>
-        <button id="resetGameBtn" class="btn">Reset</button>
-      </div>
-    </section>
-
-    <!-- Mini Game: Type the Wish -->
-    <section class="card typer">
-      <h3>⌨️ Type the Magic Words</h3>
-      <p class="typer-target" id="typerTarget">happy birthday bbg</p>
-      <input id="typerInput" class="typer-input" type="text" placeholder="Type here and hit Enter…" />
-      <p class="typer-result" id="typerResult" aria-live="polite"></p>
-    </section>
-
-    <!-- Wishes Board -->
-    <section class="card wishes">
-      <h3>💬 Message Board</h3>
-      <form id="wishForm" class="wish-form">
-        <input id="wishInput" type="text" placeholder="Drop a cute wish…" maxlength="120" />
-        <button class="btn" type="submit">Post</button>
-      </form>
-      <ul id="wishesList" class="wishes-list"></ul>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>Made with 🫶 in your colors • #B51A2B #541A2E #FFA586 #384358 #242F49 #161E2F</p>
-  </footer>
-
-  <!-- Hidden Audio -->
-  <audio id="song" src="song.mp3" preload="auto"></audio>
-
-  <!-- Popup Template -->
-  <dialog id="wishDialog">
-    <p id="wishDialogText"></p>
-    <form method="dialog">
-      <button class="btn primary">Close</button>
-    </form>
-  </dialog>
+  </div>
 
   <script src="script.js"></script>
 </body>
